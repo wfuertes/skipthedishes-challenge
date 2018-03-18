@@ -17,7 +17,7 @@ import com.skipthedishes.orderservice.model.Order;
 import com.skipthedishes.orderservice.service.OrderService;
 
 @RestController
-@RequestMapping(path = "/orders")
+@RequestMapping(path = "/v1/orders")
 public class OrderCtrl {
 
 	private OrderService orderService;

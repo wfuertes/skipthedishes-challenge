@@ -1,4 +1,4 @@
-package com.skipthedishes.orderservice.config;
+package com.skipthedishes.productservice.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class PersistenceConfig {
 		 * "resources/scripts"
 		 * INIT=RUNSCRIPT FROM 'classpath:scripts/schema.sql'
 		 */
-		ds.setJdbcUrl("jdbc:h2:mem:order_service;DB_CLOSE_DELAY=-1");
+		ds.setJdbcUrl("jdbc:h2:mem:product_db;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM 'classpath:data/products.sql'");
 		ds.setUsername("sa");
 		ds.setPassword("sa");
 		ds.setConnectionTestQuery("SELECT 1");
@@ -43,7 +43,7 @@ public class PersistenceConfig {
 
 		Map<String, Object> props = new HashMap<>();
 		props.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		props.put("hibernate.hbm2ddl.auto", "create-drop");
+		props.put("hibernate.hbm2ddl.auto", "none");
 		props.put("hibernate.show_sql", true);
 		props.put("hibernate.format_sql", true);
 		props.put("auto-import", false);

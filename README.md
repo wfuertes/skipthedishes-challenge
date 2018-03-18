@@ -1,3 +1,3 @@
 # skipthedishes-challenge
 
-![pseudo architecture](/pseudo-arq.jpeg)
+![pseudo architecture](/pseudo-arch.jpeg)

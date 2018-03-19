@@ -38,7 +38,7 @@ public class PersistenceConfig {
 
 		LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
 		emfb.setDataSource(dataSource);
-		emfb.setPackagesToScan("com.skipthedishes.productservice.model");
+		emfb.setPackagesToScan("com.skipthedishes.orderservice.model");
 		emfb.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
 		Map<String, Object> props = new HashMap<>();

@@ -23,7 +23,7 @@ public class JmsConfig {
 	@Bean
 	public CachingConnectionFactory getCachingConnectionFactory() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-		connectionFactory.setBrokerURL("tcp://localhost:61616");
+		connectionFactory.setBrokerURL("tcp://activemq:61616");
 
 		CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(connectionFactory);
 		cachingConnectionFactory.setSessionCacheSize(10);

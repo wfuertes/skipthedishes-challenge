@@ -7,25 +7,45 @@ The project challenge is not complete, but I was able to cover a good part. Let'
 3. At order-service I was used a ActiveMQ in order to have a queue for incoming orders;
 4. At order-service I put consumer responsible for process the messages (orders);
 5. As database I am using a in-memory H2 to represent one database per microservice;
-6. For the queue I am using docker with ActiveMQ;
-```
-$ docker run --name='activemq' -it --rm -p 8161:8161 -p 61616:61616 -e 'ACTIVEMQ_CONFIG_MINMEMORY=128' -e 'ACTIVEMQ_CONFIG_MAXMEMORY=256' -P webcenter/activemq:latest
-```
+6. For the queue I am using docker with ActiveMQ: [http://localhost:8161](http://localhost:8161) [user: admin / pass: admin]
+
 
 Follow a brief image of my archtequiture.
 
-![pseudo architecture](/pseudo-arch.jpeg)
+![pseudo architecture](/challenge-arch.png)
+
+## How to run the project
+It needs `docker` and `docker-compose` installed.
+
+### Running
+```
+$ docker-compose up
+```
+
+### Nginx will expose order APIs
+
+My nginx is exposed at port 8888: [http://localhost:8888]
+
+* `auth` => `http://localhost:8888/auth` (not completed)
+* `costumers` => `http://localhost:8888/api/v1/costumers` (not completed)
+* `products` => `http://localhost:8888/api/v1/products`
+* `orders` => `http://localhost:8888/api/v1/orders`
+
 
 ## Auth Servie
 
 ### Missing, but I am going to use JWT.
 
-## Product Api
+## Costumers API
+
+### (Not implemented yet).
+
+## Product API
 
 ### GET products
 ```
 curl -X GET \
-  http://localhost:8082/v1/products \
+  http://localhost:8888/api/v1/products \
   -H 'Cache-Control: no-cache' \
   -H 'Postman-Token: b08d9082-d5f3-452e-80f2-5a4e6b3f7f36'
 ```
@@ -33,7 +53,7 @@ curl -X GET \
 ### GET search products by name
 ```
 curl -X GET \
-  http://localhost:8082/v1/products/search/{searchText} \
+  http://localhost:8888/api/v1/products/search/{searchText} \
   -H 'Cache-Control: no-cache' \
   -H 'Postman-Token: 793c2574-c01f-4589-8abe-3516c489c376'
 ```
@@ -44,7 +64,7 @@ curl -X GET \
 ### GET Order
 ```
 curl -X GET \
-  http://localhost:8082/orders/1 \
+  http://localhost:8888/api/v1/orders/1 \
   -H 'Cache-Control: no-cache' \
   -H 'Postman-Token: 56d80667-a57d-40e9-bc12-ffa39a11766e'
 ```
@@ -52,7 +72,7 @@ curl -X GET \
 ### Create Order
 ```
 curl -X POST \
-  http://localhost:8082/orders \
+  http://localhost:8888/api/v1/orders \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -H 'Postman-Token: 550d3355-e7f3-4a1b-b4bb-280b584122ec' \

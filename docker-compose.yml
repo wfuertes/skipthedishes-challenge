@@ -1,6 +1,13 @@
 version: '3'
 services:
 
+  mysql:
+    image: mysql:latest
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+
   activemq:
     image: webcenter/activemq:latest
     ports:
@@ -66,12 +73,14 @@ services:
   #   networks:
   #     - banco
   #     - web
+  #     - filar
+  #     - ./worker:/worker
+  #   working_dir: /worker
+  #   command: worker.py
+  #   networks:
   #     - fila
   #   depends_on:
-  #     - db
-  #     - queue
-  #   environment:
-  #     - DB_NAME=abc_sender
+  #     - queueE=abc_sender
   # queue:
   #   image: redis:3.2
   #   networks:

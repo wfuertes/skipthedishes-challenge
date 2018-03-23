@@ -12,6 +12,13 @@ services:
     image: webcenter/activemq:latest
     ports:
       - 8161:8161
+
+  auth-service:
+    image: maven:3.3-jdk-8
+    volumes:
+      - ./auth-service:/opt/auth-service
+    working_dir: /opt/auth-service
+    command: mvn spring-boot:run
   
   product-service:
     image: maven:3.3-jdk-8

@@ -26,7 +26,7 @@ $ docker-compose up
 
 My nginx is exposed at port 8888: [http://localhost:8888]
 
-* `auth` => `http://localhost:8888/auth` (not completed)
+* `auth` => `http://localhost:8888/auth`
 * `costumers` => `http://localhost:8888/api/v1/costumers` (not completed)
 * `products` => `http://localhost:8888/api/v1/products`
 * `orders` => `http://localhost:8888/api/v1/orders`
@@ -34,7 +34,28 @@ My nginx is exposed at port 8888: [http://localhost:8888]
 
 ## Auth Servie
 
-### Missing, but I am going to use JWT.
+### POST authenticating
+
+```
+curl -X POST \
+  http://localhost:8888/auth \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: a800f17d-bef3-4ee2-800f-6d648cffd3f5' \
+  -d '{
+	"username": "admin",
+	"password": "admin"
+   }'
+```
+
+### GET User info
+```
+curl -X GET \
+  http://localhost:8888/auth/user \
+  -H 'Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZGllbmNlIjoid2ViIiwiY3JlYXRlZCI6MTUyMTgxNDg1MzQ2MiwiZXhwIjoxNTIyNDE5NjUzfQ.iwRlMtICAMSsajVgvBWnmVSyJhF6xWO12r6QtfGqMLVA7yKZq0qaQqP050bWmjd0Otn6qcHNMbeNudUaXrrltA' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Postman-Token: 24b05353-4f90-4faa-adda-347f671e431c'
+```
 
 ## Costumers API
 
